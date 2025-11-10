@@ -1,0 +1,370 @@
+/*
+===================================================
+1. MOBILE VIEWPORT SETUP (CRITICAL FOR ALL DEVICES)
+===================================================
+*/
+/* This is a CSS hack to inject the required viewport meta tag for mobile browsers */
+@charset "UTF-8";
+@viewport {
+    width: device-width;
+    initial-scale: 1;
+    maximum-scale: 1;
+}
+
+/*
+===================================================
+NEW FIX: STICKY FOOTER MECHANISM (Ensures Footer is always at the bottom)
+===================================================
+*/
+
+/* 1. Ensure the root elements cover the entire viewport */
+html {
+    height: 100%;
+}
+
+/* 2. Use Flexbox on the body to stack content vertically */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Body must take at least the full viewport height */
+    /* Add for immediate mobile scaling */
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* 3. The main content container (which should wrap everything between header/footer) takes all available space */
+#content-wrapper {
+    flex: 1; /* This is the key: forces the wrapper to grow and push the footer down */
+    width: 100%;
+}
+
+
+/* --- Global Styles & Modern Typography --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Oswald:wght@700&display=swap');
+
+:root {
+    --primary-color: #0077b6; /* Ocean Blue */
+    --secondary-color: #ffc300; /* Energetic Gold */
+    --accent-color: #ff5733; /* Bright Red-Orange Accent */
+    --background-color: #e0f7fa; /* Light Aqua Background */
+    --text-color: #023e8a; /* Deep Blue Text */
+    --card-bg: #ffffff;
+    --shadow-deep: 0 15px 40px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 20px var(--secondary-color), 0 0 10px var(--accent-color);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    transition: background-color 0.5s ease;
+}
+
+/* --- Fluid Homepage Header (index.html) --- */
+header {
+    /* Fluid Multi-Color Animated Background */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
+    background-size: 300% 300%;
+    animation: fluidBackground 15s ease infinite alternate;
+    
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-deep);
+    position: relative;
+    overflow: hidden;
+}
+@keyframes fluidBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Dramatic Title Effect (H1) */
+header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5em;
+    letter-spacing: 6px;
+    margin: 0;
+    text-shadow: var(--shadow-glow); /* Intense Glow */
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+    animation: titleEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes titleEntrance {
+    0% { transform: scale(0.5) translateY(-100px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+header h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Decorative Divider (replacing hr) */
+hr {
+    border: none;
+    height: 30px;
+    width: 90%;
+    margin: 30px auto;
+    position: relative;
+    background: transparent;
+}
+hr::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--secondary-color),
+        var(--secondary-color) 15px,
+        var(--accent-color) 15px,
+        var(--accent-color) 30px
+    );
+    transform: translateY(-50%) skewX(-10deg); /* Skewed look */
+    border-radius: 5px;
+    box-shadow: var(--shadow-deep);
+    animation: stripes 10s linear infinite;
+}
+@keyframes stripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 300px 0; }
+}
+header br { display: none; } 
+
+/* Navigation Links (Neon Button Design) */
+header a {
+    display: inline-block;
+    color: white;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    margin: 10px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 40px;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-transform: uppercase;
+    font-weight: 800;
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+}
+
+header a:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transform: translateY(-8px) scale(1.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 30px var(--secondary-color), 0 0 60px var(--accent-color);
+}
+
+
+/* --- Content & SCROLL-REVEAL SETUP --- */
+
+.initial-hide { opacity: 0; } /* Set by JS to prevent FOUC */
+
+.scroll-reveal-item {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--text-color);
+    color: #f0f0f0; /* FIX: Changed general text color for readability against dark blue */
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9em;
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+}
+footer strong { 
+    font-weight: 800; 
+    color: var(--secondary-color); /* FIX: Changed strong text color to bright Gold */
+}
+
+/* --- CREDITS.HTML Styling --- */
+body:not(:has(header)) { padding: 40px; text-align: center; }
+body:not(:has(header)) h1 { 
+    color: var(--accent-color); 
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(255, 87, 51, 0.8);
+}
+body:not(:has(header)) h2 { 
+    color: var(--primary-color); 
+    margin-top: 40px;
+    text-shadow: 0 0 5px rgba(0, 119, 182, 0.5);
+}
+
+pre strong {
+    display: block;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 25px auto;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: var(--shadow-deep);
+    border-left: 10px solid var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+pre strong:hover {
+    transform: perspective(1000px) rotateX(5deg) scale(1.01); /* Subtle 3D lift */
+}
+
+/* --- NOTICES.HTML Styling --- */
+#liveDate {
+    font-size: 3em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: var(--accent-color);
+    display: block;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-deep);
+    max-width: 550px;
+    transition: all 0.5s ease;
+    border: 5px solid var(--accent-color);
+    animation: pulseBorder 1.5s infinite alternate;
+}
+
+/* --- STAFF-DETAILS.HTML (Table with 3D Flip) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 60px auto;
+    box-shadow: var(--shadow-deep);
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 1200px;
+}
+th, td { 
+    padding: 20px; 
+    text-align: left; 
+    border-bottom: 1px solid #e0f2f7; 
+    position: relative;
+    background-color: inherit;
+    transition: background-color 0.4s ease;
+}
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+}
+tr {
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-style: preserve-3d; /* Enable 3D for the flip */
+}
+tr:nth-child(even) { background-color: #f0faff; }
+
+/* 3D FLIP EFFECT ON ROW HOVER */
+tr:hover {
+    background-color: #e6f0ff;
+    transform: perspective(1000px) rotateX(3deg) scale(1.01);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for Staff Names (Bolding in your HTML is preserved) */
+td:nth-child(2) {
+    font-weight: 600;
+    color: var(--text-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+img:hover {
+    transform: rotateY(180deg) scale(1.1); /* Funky 3D Spin */
+    border-color: var(--accent-color);
+}
+
+/*
+===================================================
+4. MOBILE OPTIMIZATION
+===================================================
+*/
+
+/* General Rule for Smaller Screens (Phones) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 3em; /* Reduce large H1 size */
+        letter-spacing: 3px;
+    }
+    header h2 {
+        font-size: 1.4em;
+    }
+    header a {
+        display: block; /* Make buttons stack vertically */
+        width: 80%;
+        margin: 15px auto;
+    }
+    
+    /* General content padding reduction */
+    pre strong, footer, table {
+        padding: 20px 15px;
+    }
+    
+    /* Responsive Table Styling (Makes table data stack) */
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+    thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        margin-bottom: 10px;
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+    }
+    td { 
+        border: none;
+        border-bottom: 1px solid #f0faff;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    td:before {
+        /* Use data-label attribute in HTML for column headers */
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-align: left;
+    }
+}

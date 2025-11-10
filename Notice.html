@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPORTANT-NOTICES</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h1>IMPORTANT NOTICES WILL BE VISIBLE HERE--</h1>
+    <hr>
+
+    <h2>
+        <p id="liveDate"></p>
+
+<script>
+    function updateLiveDate() {
+        var now = new Date();
+        var dateTimeString = now.toLocaleString(); // Includes time for live updates
+        document.getElementById("liveDate").innerHTML = dateTimeString;
+    }
+
+    // Call the function once to display immediately
+    updateLiveDate();
+
+    // Update every second (1000 milliseconds)
+    setInterval(updateLiveDate, 1000);
+</script>
+    </h2>
+
+    <pre>
+        <h2>Currently There is no new notice to display...</h2>
+    </pre>
+</body>
+</html>
