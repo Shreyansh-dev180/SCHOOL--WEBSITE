@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRASI-PARAMOUNT-SCHOOL</title>
-    
+
     <!--
         --- 1. MERGED STYLE.CSS CONTENT ---
         This section contains all your styling to ensure the design is preserved.
@@ -17,6 +18,7 @@
         */
         /* This is a CSS hack to inject the required viewport meta tag for mobile browsers */
         @charset "UTF-8";
+
         @viewport {
             width: device-width;
             initial-scale: 1;
@@ -38,7 +40,8 @@
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Body must take at least the full viewport height */
+            min-height: 100vh;
+            /* Body must take at least the full viewport height */
             /* Add for immediate mobile scaling */
             width: 100%;
             overflow-x: hidden;
@@ -46,7 +49,8 @@
 
         /* 3. The main content container (which should wrap everything between header/footer) takes all available space */
         #content-wrapper {
-            flex: 1; /* This is the key: forces the wrapper to grow and push the footer down */
+            flex: 1;
+            /* This is the key: forces the wrapper to grow and push the footer down */
             width: 100%;
         }
 
@@ -54,11 +58,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Oswald:wght@700&display=swap');
 
         :root {
-            --primary-color: #0077b6; /* Ocean Blue */
-            --secondary-color: #ffc300; /* Energetic Gold */
-            --accent-color: #ff5733; /* Bright Red-Orange Accent */
-            --background-color: #e0f7fa; /* Light Aqua Background */
-            --text-color: #023e8a; /* Deep Blue Text */
+            --primary-color: #0077b6;
+            /* Ocean Blue */
+            --secondary-color: #ffc300;
+            /* Energetic Gold */
+            --accent-color: #ff5733;
+            /* Bright Red-Orange Accent */
+            --background-color: #e0f7fa;
+            /* Light Aqua Background */
+            --text-color: #023e8a;
+            /* Deep Blue Text */
             --card-bg: #ffffff;
             --shadow-deep: 0 15px 40px rgba(0, 0, 0, 0.2);
             --shadow-glow: 0 0 20px var(--secondary-color), 0 0 10px var(--accent-color);
@@ -81,7 +90,7 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
             background-size: 300% 300%;
             animation: fluidBackground 15s ease infinite alternate;
-            
+
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -89,10 +98,19 @@
             position: relative;
             overflow: hidden;
         }
+
         @keyframes fluidBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Dramatic Title Effect (H1) */
@@ -101,15 +119,24 @@
             font-size: 5em;
             letter-spacing: 6px;
             margin: 0;
-            text-shadow: var(--shadow-glow); /* Intense Glow */
+            text-shadow: var(--shadow-glow);
+            /* Intense Glow */
             position: relative;
             z-index: 2;
             text-transform: uppercase;
             animation: titleEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+
         @keyframes titleEntrance {
-            0% { transform: scale(0.5) translateY(-100px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
+            0% {
+                transform: scale(0.5) translateY(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
         }
 
         header h2 {
@@ -129,6 +156,7 @@
             position: relative;
             background: transparent;
         }
+
         hr::after {
             content: '';
             position: absolute;
@@ -136,23 +164,31 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: repeating-linear-gradient(
-                45deg,
-                var(--secondary-color),
-                var(--secondary-color) 15px,
-                var(--accent-color) 15px,
-                var(--accent-color) 30px
-            );
-            transform: translateY(-50%) skewX(-10deg); /* Skewed look */
+            background: repeating-linear-gradient(45deg,
+                    var(--secondary-color),
+                    var(--secondary-color) 15px,
+                    var(--accent-color) 15px,
+                    var(--accent-color) 30px);
+            transform: translateY(-50%) skewX(-10deg);
+            /* Skewed look */
             border-radius: 5px;
             box-shadow: var(--shadow-deep);
             animation: stripes 10s linear infinite;
         }
+
         @keyframes stripes {
-            0% { background-position: 0 0; }
-            100% { background-position: 300px 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 300px 0;
+            }
         }
-        header br { display: none; } 
+
+        header br {
+            display: none;
+        }
 
         /* Navigation Links (Neon Button Design) */
         header a {
@@ -192,20 +228,28 @@
         .page-content {
             padding: 40px 20px;
             text-align: center;
-            display: none; /* All pages are hidden by default, shown by JS */
-            flex: 1; /* Allows content area to push the footer down */
-        }
-        #home-page {
-            display: block; /* Show the homepage content by default */
+            display: none;
+            /* All pages are hidden by default, shown by JS */
+            flex: 1;
+            /* Allows content area to push the footer down */
         }
 
-        .initial-hide { opacity: 0; } /* Set by JS to prevent FOUC */
+        #home-page {
+            display: block;
+            /* Show the homepage content by default */
+        }
+
+        .initial-hide {
+            opacity: 0;
+        }
+
+        /* Set by JS to prevent FOUC */
 
         .scroll-reveal-item {
             opacity: 0;
             transform: translateY(40px) scale(0.95);
-            transition: opacity 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                        transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: opacity 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .revealed {
@@ -216,7 +260,8 @@
         /* --- Footer --- */
         footer {
             background-color: var(--text-color);
-            color: #f0f0f0; /* FIX: Changed general text color for readability against dark blue */
+            color: #f0f0f0;
+            /* FIX: Changed general text color for readability against dark blue */
             text-align: center;
             padding: 25px;
             font-size: 0.9em;
@@ -225,20 +270,23 @@
             margin-top: 50px;
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
         }
-        footer strong { 
-            font-weight: 800; 
-            color: var(--secondary-color); /* FIX: Changed strong text color to bright Gold */
+
+        footer strong {
+            font-weight: 800;
+            color: var(--secondary-color);
+            /* FIX: Changed strong text color to bright Gold */
         }
 
         /* --- CREDITS.HTML Styling --- */
         /* Note: Since the body styling conflicts with the index header, we style the content div directly */
-        #credits-page h1 { 
-            color: var(--accent-color); 
+        #credits-page h1 {
+            color: var(--accent-color);
             margin-bottom: 30px;
             text-shadow: 0 0 8px rgba(255, 87, 51, 0.8);
         }
-        #credits-page h2 { 
-            color: var(--primary-color); 
+
+        #credits-page h2 {
+            color: var(--primary-color);
             margin-top: 40px;
             text-shadow: 0 0 5px rgba(0, 119, 182, 0.5);
         }
@@ -255,8 +303,10 @@
             border-left: 10px solid var(--secondary-color);
             transition: transform 0.3s ease;
         }
+
         pre strong:hover {
-            transform: perspective(1000px) rotateX(5deg) scale(1.01); /* Subtle 3D lift */
+            transform: perspective(1000px) rotateX(5deg) scale(1.01);
+            /* Subtle 3D lift */
         }
 
         /* --- NOTICES.HTML Styling --- */
@@ -288,14 +338,17 @@
             overflow: hidden;
             max-width: 1200px;
         }
-        th, td { 
-            padding: 20px; 
-            text-align: left; 
-            border-bottom: 1px solid #e0f2f7; 
+
+        th,
+        td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0f2f7;
             position: relative;
             background-color: inherit;
             transition: background-color 0.4s ease;
         }
+
         th {
             background-color: var(--primary-color);
             color: white;
@@ -304,11 +357,16 @@
             position: sticky;
             top: 0;
         }
+
         tr {
             transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transform-style: preserve-3d; /* Enable 3D for the flip */
+            transform-style: preserve-3d;
+            /* Enable 3D for the flip */
         }
-        tr:nth-child(even) { background-color: #f0faff; }
+
+        tr:nth-child(even) {
+            background-color: #f0faff;
+        }
 
         /* 3D FLIP EFFECT ON ROW HOVER */
         tr:hover {
@@ -331,8 +389,10 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+
         img:hover {
-            transform: rotateY(180deg) scale(1.1); /* Funky 3D Spin */
+            transform: rotateY(180deg) scale(1.1);
+            /* Funky 3D Spin */
             border-color: var(--accent-color);
         }
 
@@ -345,44 +405,59 @@
         /* General Rule for Smaller Screens (Phones) */
         @media (max-width: 600px) {
             header h1 {
-                font-size: 3em; /* Reduce large H1 size */
+                font-size: 3em;
+                /* Reduce large H1 size */
                 letter-spacing: 3px;
             }
+
             header h2 {
                 font-size: 1.4em;
             }
+
             header a {
-                display: block; /* Make buttons stack vertically */
+                display: block;
+                /* Make buttons stack vertically */
                 width: 80%;
                 margin: 15px auto;
             }
-            
+
             /* General content padding reduction */
-            pre strong, footer, table {
+            pre strong,
+            footer,
+            table {
                 padding: 20px 15px;
             }
-            
+
             /* Responsive Table Styling (Makes table data stack) */
-            table, thead, tbody, th, td, tr { 
-                display: block; 
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
             }
-            thead tr { 
+
+            thead tr {
                 position: absolute;
                 top: -9999px;
                 left: -9999px;
             }
+
             tr {
                 margin-bottom: 10px;
                 border: 1px solid var(--primary-color);
                 border-radius: 8px;
             }
-            td { 
+
+            td {
                 border: none;
                 border-bottom: 1px solid #f0faff;
                 text-align: right;
                 padding-left: 50%;
                 position: relative;
             }
+
             td:before {
                 /* Use data-label attribute in HTML for column headers */
                 content: attr(data-label);
@@ -416,9 +491,9 @@
         <br>
         <a href="#chat" onclick="showSection('chat-page', this)">CHAT ROOM</a>
         <br>
-        <a href="#credits" onclick="showSection('credits-page', this)">CREDITS</a> 
+        <a href="#credits" onclick="showSection('credits-page', this)">CREDITS</a>
     </header>
-    
+
     <!-- Use a main wrapper for the content of the "pages" -->
     <main id="content-wrapper">
         <!-- Default landing page (optional, will be hidden if a link is clicked) -->
@@ -432,32 +507,37 @@
             <h1>IMPORTANT NOTICES WILL BE VISIBLE HERE--</h1>
             <hr>
             <h2>
-                <!-- The Live Date Element -->
                 <p id="liveDate"></p>
             </h2>
-            <pre>
-                <h2>
-                    NOTICE
-                    Date: 11 November 2025
 
-                    Subject: PTM for Half-Yearly Examination
+            <div class="notice-content-box">
 
-                    All parents are hereby informed 
-                    that a Parent–Teacher Meeting 
-                    (PTM) will be held on Sunday 
-                    dated 16.11.2025, between 9:00 A.M. 
-                    to 1:00 P.M. regarding the Half-Yearly 
-                    Examination.
-                    It is mandatory for all parents to 
-                    come to school along with their ward.
+                <h3>NOTICE</h3>
 
-                    Note: Marks will be shown only to those 
-                    students whose school fees are cleared.
+                <p>
+                    <strong>Date:</strong> 11 November 2025
+                </p>
 
-                    Regards,
+                <p>
+                    <strong>Subject:</strong> PTM for Half-Yearly Examination
+                </p>
+
+                <p>
+                    All parents are hereby informed that a Parent–Teacher Meeting
+                    (PTM) will be held on Sunday dated 16.11.2025, between 9:00 A.M.
+                    to 1:00 P.M. regarding the Half-Yearly Examination.
+                    It is mandatory for all parents to come to school along with their ward.
+                </p>
+
+                <p>
+                    **Note:** Marks will be shown only to those students whose school fees are cleared.
+                </p>
+
+                <p>
+                    Regards,<br>
                     The Principal
-                </h2>
-            </pre>
+                </p>
+            </div>
         </div>
 
         <!-- 3. MERGED CONTENT: SCHOOL-CAMPUS-IMAGES.HTML -->
@@ -481,7 +561,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img1.jpg" alt="Photo of Principal" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img1.jpg" alt="Photo of Principal" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">**Mr. SABHAJEET SINGH (Principal Sir)**</td>
                         <td data-label="Role">Principal</td>
@@ -490,7 +571,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img2.jpg" alt="Photo of Staff Member 2" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img2.jpg" alt="Photo of Staff Member 2" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. ASHOK SHUKLA (VICE-PRINCIPLE)</td>
                         <td data-label="Role">VICE-PRINCIPLE</td>
@@ -499,7 +581,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img3.jpg" alt="Photo of Staff Member 3" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img3.jpg" alt="Photo of Staff Member 3" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. ABHISHEK SINGH</td>
                         <td data-label="Role">MANAGEMENT</td>
@@ -508,7 +591,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img4.jpg" alt="Photo of Staff Member 4" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img4.jpg" alt="Photo of Staff Member 4" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. ABHISHEK SINGH</td>
                         <td data-label="Role">ENGLISH TEACHER</td>
@@ -517,7 +601,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img5.jpg" alt="Photo of Staff Member 5" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img5.jpg" alt="Photo of Staff Member 5" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. AKASH YADAV</td>
                         <td data-label="Role">SCIENCE TEACHER</td>
@@ -526,7 +611,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img6.jpg" alt="Photo of Staff Member 6" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img6.jpg" alt="Photo of Staff Member 6" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. ASHUTOSH SHUKLA</td>
                         <td data-label="Role">HINDI TEACHER</td>
@@ -535,7 +621,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img7.jpg" alt="Photo of Staff Member 7" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img7.jpg" alt="Photo of Staff Member 7" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Miss. AYUSHI YADAV</td>
                         <td data-label="Role">SCIENCE TEACHER</td>
@@ -544,7 +631,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img8.jpg" alt="Photo of Staff Member 8" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img8.jpg" alt="Photo of Staff Member 8" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. AK BHARTI</td>
                         <td data-label="Role">ENGLISH TEACHER</td>
@@ -553,7 +641,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img9.jpg" alt="Photo of Staff Member 9" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img9.jpg" alt="Photo of Staff Member 9" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. DEVANG SINGH</td>
                         <td data-label="Role">ENGLISH TEACHER</td>
@@ -562,7 +651,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img10.jpg" alt="Photo of Staff Member 10" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img10.jpg" alt="Photo of Staff Member 10" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. DHARMARAJ SINGH</td>
                         <td data-label="Role">MANAGER</td>
@@ -571,7 +661,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img11.jpg" alt="Photo of Staff Member 11" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img11.jpg" alt="Photo of Staff Member 11" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. PRINCE SINGH</td>
                         <td data-label="Role">S.ST TEACHER</td>
@@ -580,7 +671,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img12.jpg" alt="Photo of Staff Member 12" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img12.jpg" alt="Photo of Staff Member 12" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. SUJEET SIR</td>
                         <td data-label"Role">S.ST TEACHER</td>
@@ -589,7 +681,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img13.jpg" alt="Photo of Staff Member 13" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img13.jpg" alt="Photo of Staff Member 13" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. GOVIND YADAV</td>
                         <td data-label="Role">CHEMISTRY TEACHER</td>
@@ -598,7 +691,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img14.jpg" alt="Photo of Staff Member 14" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img14.jpg" alt="Photo of Staff Member 14" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. LUCKY SIR</td>
                         <td data-label="Role">MATHS TEACHER</td>
@@ -607,7 +701,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img15.jpg" alt="Photo of Staff Member 15" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img15.jpg" alt="Photo of Staff Member 15" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. INDRESH SHUKLA</td>
                         <td data-label="Role">MATHS TEACHER</td>
@@ -616,7 +711,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img16.jpg" alt="Photo of Staff Member 16" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img16.jpg" alt="Photo of Staff Member 16" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. YOGESH KUMAR</td>
                         <td data-label="Role">MATHS TEACHER</td>
@@ -625,7 +721,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img17.jpg" alt="Photo of Staff Member 17" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img17.jpg" alt="Photo of Staff Member 17" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mrs. SEETA YADAV</td>
                         <td data-label="Role">HINDI TEACHER</td>
@@ -634,7 +731,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img18.jpg" alt="Photo of Staff Member 18" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img18.jpg" alt="Photo of Staff Member 18" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Miss. SHIVANI SINGH</td>
                         <td data-label="Role">ASSISTING WORK</td>
@@ -643,7 +741,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img19.jpg" alt="Photo of Staff Member 19" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img19.jpg" alt="Photo of Staff Member 19" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. RAMJAN ALI</td>
                         <td data-label="Role">ENGLISH TEACHER</td>
@@ -652,7 +751,8 @@
 
                     <tr>
                         <td data-label="Image">
-                            <img src="img20.jpg" alt="Photo of Staff Member 20" width="50" height="50" onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
+                            <img src="img20.jpg" alt="Photo of Staff Member 20" width="50" height="50"
+                                onerror="this.onerror=null; this.src='https://placehold.co/50x50/cccccc/333333?text=N/A';">
                         </td>
                         <td data-label="Name">Mr. PRADEEP SIR</td>
                         <td data-label="Role">BIOLOGY TEACHER</td>
@@ -701,7 +801,7 @@
             Under The Supervision Of Mr. Prince Sir </strong>
         </pre>
     </footer>
-    
+
     <!--
         --- 2. MERGED SCRIPT.JS CONTENT + NAVIGATION LOGIC ---
         This script contains all the original behaviors and the new SPA navigation.
@@ -719,7 +819,7 @@
             if (targetSection) {
                 targetSection.style.display = 'block';
             }
-            
+
             // 3. Update active link highlighting
             document.querySelectorAll('header a').forEach(link => {
                 link.classList.remove('active-link');
@@ -730,7 +830,7 @@
             // Scroll to the top of the main content area for a better "page load" feel
             document.getElementById('content-wrapper').scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         // Function from original notices.html
         function updateLiveDate() {
             var now = new Date();
@@ -740,45 +840,45 @@
                 liveDateElement.innerHTML = dateTimeString;
             }
         }
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
 
             // ====================================================
             // 1. UNIVERSAL FADE-IN FIX (Prevents White Screen)
             // ====================================================
-            
+
             // Add a temporary class to hide the body initially via JS right before the content loads
             body.classList.add('initial-hide');
             body.style.transition = 'opacity 1s ease-out';
-            
+
             // Remove the class immediately after a tiny delay, making the whole page fade in smoothly
             setTimeout(() => {
                 body.classList.remove('initial-hide');
-            }, 50); 
+            }, 50);
 
 
             // ====================================================
             // 2. SCROLL-REVEAL EFFECT (Universal for all pages)
             // ====================================================
-            
+
             // Select ALL relevant structural elements and tag them for the scroll effect
             const revealElements = document.querySelectorAll(
                 'h1, h2, hr, a, table, pre strong, footer, .page-content'
             );
-            
+
             // Add the class needed for the CSS animation to take effect
             revealElements.forEach(element => {
                 // Exclude the main H1 title on the index page as it has its own CSS animation
                 if (element.tagName !== 'H1' || !element.closest('header')) {
-                     element.classList.add('scroll-reveal-item');
+                    element.classList.add('scroll-reveal-item');
                 }
             });
 
             const observerOptions = {
-                root: null, 
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 
+                threshold: 0.1
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
@@ -795,7 +895,7 @@
             document.querySelectorAll('.scroll-reveal-item').forEach(element => {
                 observer.observe(element);
             });
-            
+
 
             // ====================================================
             // 3. HOMEPAGE H1 GLITCH EFFECT (Replaced with a dynamic pulse)
@@ -832,13 +932,13 @@
             updateLiveDate();
 
             // Start interval for live updates
-            setInterval(updateLiveDate, 1000); 
+            setInterval(updateLiveDate, 1000);
 
             const liveDateElement = document.getElementById('liveDate');
             if (liveDateElement) {
                 // Add a click effect that shakes the date element
                 liveDateElement.addEventListener('click', () => {
-                    liveDateElement.style.animation = 'none'; 
+                    liveDateElement.style.animation = 'none';
                     void liveDateElement.offsetWidth;
                     liveDateElement.style.animation = 'shake 0.3s ease-in-out'; // Faster shake
                     setTimeout(() => {
@@ -849,4 +949,5 @@
         });
     </script>
 </body>
+
 </html>
